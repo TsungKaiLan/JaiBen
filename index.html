@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JaiBen-呷奔 訂便當系統</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+</head>
+<body>
+    <div class="light_box">
+        <div class="photo">
+            <img src="image/photo.jpg">
+            <div class="close"><span></span></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="title">JaiBen</div>
+        <div class="subtitle">訂便當系統</div>
+        <table border="0" class="table" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>品名</th>
+                <th>價錢</th>
+                <th>數量</th>
+                <th>配送方式</th>
+                <th>地址</th>
+                <th>電話</th>
+                <!-- <th>照片</th> -->
+            </tr>
+            <tr>
+                <td>鹽烤天使紅蝦便當</td>
+                <td>149</td>
+                <td>
+                    <input type="number" class="quantity" name="quantity" value="0">
+                    <input type="button" value="+" class="add">
+                    <input type="button" value="-" class="decrease">
+                </td>
+                <td>
+                    <input type="radio" id="delivery" name="delivery" checked>
+                    <label for="delivery">外送</label>
+                    <input type="radio" id="delivery2" name="delivery">
+                    <label for="delivery2">自取</label>
+                </td>
+                <td class="ad">
+                    <!-- <select>
+                        <option>台中市</option>
+                        <option>台北市</option>
+                    </select>
+                    <select>
+                        <option>西區</option>
+                        <option>南屯區</option>
+                        <option>西屯區</option>
+                        <option></option>
+                        <option></option>
+                    </select> -->
+                    <input type="text" class="address" value="">
+                </td>
+                <td><input type="text" class="tel" value=""></td>
+                <!-- <td class="pic"><img src="image/icon.png" width="26" align="middle" class="pic_img"></td> -->
+            </tr>
+        </table>
+        <div class="name">
+            <label><span>*</span> 訂購人</label>
+            <input type="text" class="name_input" value="">
+        </div>
+        <div class="button">
+            <input type="button" class="send" onclick="javascript:location.href='index2.html'" value="送出">
+            <input type="button" class="clear" value="清除">
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            $(".pic_img").click(function(){
+                $(".light_box").addClass('open');
+            });
+            $(".close").click(function(){
+                $(".light_box").removeClass('open');
+            });
+        });
+        $(".add").click(function(){
+            var inpt = $(".quantity");
+            var val = parseInt(inpt.val());
+            if ( val < 0 ) inpt.val(val=0);
+            inpt.val(val+1);
+        });
+        $(".decrease").click(function(){
+            var inpt = $(".quantity");
+            var val = parseInt(inpt.val());
+            if ( val < 0 ) inpt.val(val=0);
+            if ( val == 0 ) return;
+            inpt.val(val-1);
+        });
+        $(".clear").on("focus", function() {
+            $(".address").val("");
+            $(".tel").val("");
+            $(".quantity").val("0");
+            $(".name_input").val("");
+        });
+    </script>
+</body>
+</html>
